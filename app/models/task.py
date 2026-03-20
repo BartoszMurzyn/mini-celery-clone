@@ -1,0 +1,19 @@
+from pydantic import BaseModel, Field
+from typing import Optional, Any
+from datetime import datetime, timezone
+import uuid
+from enum import Enum
+
+
+class Task(BaseModel):
+    id: uuid.UUID = Field(default_factory=uuid.uuid4)
+    created_at: datetime = Field(default_factory= lambda: datetime.now(timezone.utc))
+    result: Optional[Any] = None
+    error: Optional[Any] = None
+
+
+class TaskStatus(str, Enum):
+    PENDING= 'Pending'
+    RUNNING= 'Running'
+    DONE= 'Done'
+    FAILED= 'Failed'
