@@ -5,11 +5,6 @@ import uuid
 from enum import Enum
 
 
-class Task(BaseModel):
-    id: uuid.UUID = Field(default_factory=uuid.uuid4)
-    created_at: datetime = Field(default_factory= lambda: datetime.now(timezone.utc))
-    result: Optional[Any] = None
-    error: Optional[Any] = None
 
 
 class TaskStatus(str, Enum):
@@ -17,3 +12,10 @@ class TaskStatus(str, Enum):
     RUNNING= 'Running'
     DONE= 'Done'
     FAILED= 'Failed'
+
+class Task(BaseModel):
+    id: uuid.UUID = Field(default_factory=uuid.uuid4)
+    created_at: datetime = Field(default_factory= lambda: datetime.now(timezone.utc))
+    result: Optional[Any] = None
+    error: Optional[Any] = None
+    status : TaskStatus = TaskStatus.PENDING
