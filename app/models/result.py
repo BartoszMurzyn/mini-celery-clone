@@ -11,5 +11,12 @@ class TaskResult(BaseModel):
     created_at: datetime = Field(default_factory=datetime.now(timezone.utc))
 
     @classmethod
-    def from_task(cls, task:Task):
-        TaskResult.from_task(task)
+    def from_task(cls, task:Task) -> "TaskResult":
+        # method for quick converion to task
+        return cls (
+            task_id=str(task.id),
+            result= task.result,
+            error = task.error,
+            created_at= task.created_at,
+            status = task.status
+        )
