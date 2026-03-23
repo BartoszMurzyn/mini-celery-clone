@@ -19,3 +19,8 @@ class Task(BaseModel):
     result: Optional[Any] = None
     error: Optional[Any] = None
     status : TaskStatus = TaskStatus.PENDING
+
+    function_name: str   
+    args: list = []      
+    kwargs: dict = {}
+
