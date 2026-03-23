@@ -7,7 +7,7 @@ TASK_REGISTRY = {
     "fail_task" : fail_task,
 }
 
-def run_task(task):
+def run_task(task: Task):
     func = TASK_REGISTRY.get(task.function_name)
     if func is None:
         return None, f"Unknown task: {task.function_name}"
@@ -20,6 +20,7 @@ def run_task(task):
 
 
 task = Task(function_name="add", kwargs={"a":10, "b":20})
+
 
 result, error = run_task(task)
 
