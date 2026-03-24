@@ -22,5 +22,9 @@ class Task(BaseModel):
 
     function_name: str   
     args: list = Field(default_factory=list) 
-    kwargs: dict = Field(default_factory=dict) 
+    # kwargs: dict = Field(default_factory=dict) 
 
+class TaskSubmit(BaseModel):
+    function_name: str
+    args: list = Field(default_factory=list) 
+    # kwargs: dict = Field(default_factory=dict) 

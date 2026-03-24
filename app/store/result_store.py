@@ -8,16 +8,16 @@ class ResultStore:
         self._lock = manager_object.Lock()
 
 
-    def set_task(self , task_id, task):
+    def set_task(self, task_id, task):
         with self._lock:
-            if isinstance(task,dict):
-                self._data[task_id] = dict(task)
-            else:
-                self._data[task_id] = task
+            key = str(task_id)   # zawsze string
+            print(f"[STORE] Setting {key} -> {task.get('function_name') if isinstance(task, dict) else 'task object'}")
+            self._data[key] = task   # zapisujemy task (może być dict lub obiekt)
 
     def get_task(self , task_id):
-        return self._data.get(task_id)
-
+        key = str(task_id)
+        print(f"[STORE] Getting {key}, keys: {list(self._data.keys())}")
+        return self._data.get(key)
     def get_all(self):
         return {key : value for key,value in self._data.items()}
 

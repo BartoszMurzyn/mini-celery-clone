@@ -5,9 +5,13 @@ from app.models.task import TaskStatus, Task
 from multiprocessing import Queue, Process
 
 def worker_loop(task_queue: Queue, result_store: ResultStore):
+    print("[WORKER] Worker started")
+
     while True:
         try:
+            print("[WORKER] Waiting for task...")
             data = task_queue.get()
+            print(f"[WORKER] Got task: {data.get('id')}")
             if data is None:
                 break
             task = Task(**data)

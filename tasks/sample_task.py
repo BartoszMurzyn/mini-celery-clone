@@ -2,6 +2,7 @@ import time
 
 def add(a, b):
     print ("THE RESULT: ", a + b)
+    time.sleep(2)
     return (a + b)
 
 
