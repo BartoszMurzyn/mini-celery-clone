@@ -21,6 +21,6 @@ class Task(BaseModel):
     status : TaskStatus = TaskStatus.PENDING
 
     function_name: str   
-    args: list = []      
-    kwargs: dict = {}
+    args: list = Field(default_factory=list) 
+    kwargs: dict = Field(default_factory=dict) 
 

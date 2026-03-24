@@ -3,9 +3,9 @@ import time
 
 class ResultStore:
     def __init__(self, manager_object):
-        self.manager = manager_object
-        self._data = self.manager.dict()
-        self._lock = self.manager.Lock()
+
+        self._data = manager_object.dict()
+        self._lock = manager_object.Lock()
 
 
     def set_task(self , task_id, task):

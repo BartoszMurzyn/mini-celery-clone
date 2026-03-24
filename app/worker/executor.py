@@ -17,11 +17,3 @@ def run_task(task: Task):
         return result, None
     except Exception as e:
         return None, str(e)
-
-
-task = Task(function_name="add", kwargs={"a":10, "b":20})
-
-
-result, error = run_task(task)
-
-print(result, error)
