@@ -14,17 +14,17 @@ from app.worker.pool import worker_loop, WorkerPool
 async def lifespan(app: fastapi.FastAPI):
     print("Starting Server...")
 
-    # 1. Kolejka
+
     init_task_queue()
     task_queue = get_task_queue()
 
-    # 2. Store wyników
+
     manager = multiprocessing.Manager()
     result_store = ResultStore(manager)
-    _init_result_store(result_store)          # ustaw globalną zmienną
+    _init_result_store(result_store)     
     result_store_instance = get_result_store()
 
-    # 3. WorkerPool – teraz przekazujemy rzeczywiste obiekty
+
     pool = WorkerPool(n_workers=2, task_queue=task_queue, result_store=result_store_instance)
     pool.start()
     yield

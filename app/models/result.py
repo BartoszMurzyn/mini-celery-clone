@@ -12,7 +12,7 @@ class TaskResult(BaseModel):
 
     @classmethod
     def from_task(cls, task:Task) -> "TaskResult":
-        # method for quick converion to task
+
         return cls (
             task_id=str(task.id),
             result= task.result,

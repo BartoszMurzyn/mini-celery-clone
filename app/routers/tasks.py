@@ -8,9 +8,7 @@ from multiprocessing import Manager, Queue
 from app.dependencies import get_task_queue, get_result_store
 
 router = APIRouter(prefix="/tasks")
-# manager = multiprocessing.Manager()
-# queue = multiprocessing.Queue()
-# result_store = ResultStore(manager)
+
 
 @router.post(path="", status_code=202)
 async def post_task(task_payload: TaskSubmit, task_queue = Depends(get_task_queue), result_store = Depends(get_result_store)):

@@ -13,7 +13,7 @@ def run_task(task: Task):
         return None, f"Unknown task: {task.function_name}"
     
     try:
-        result = func(*task.args, **task.kwargs)
+        result = func(*task.args)
         return result, None
     except Exception as e:
         return None, str(e)
