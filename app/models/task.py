@@ -4,9 +4,6 @@ from datetime import datetime, timezone
 import uuid
 from enum import Enum
 
-
-
-
 class TaskStatus(str, Enum):
     PENDING= 'Pending'
     RUNNING= 'Running'
